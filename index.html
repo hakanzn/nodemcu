@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#ff6600" />
+<script src="joy.js"></script>
+<style>
+#joyDiv {
+  position:absolute;
+    width:500px;
+    height:500px;
+    right:25%;
+    left:25%;
+    border: 1px solid red;
+    bottom: 1%
+    
+}
+
+.button {
+  
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  width: auto
+}
+.button1{background-color: red;}
+.button2{background-color: green;}
+.button3{background-color: yellow;
+  color: black;
+  border: 2px solid #555555;}
+
+
+</style>
+
+</head>
+<body>
+
+<div id="hakan" style="top:100px">
+	<button onclick = "butonlar(this)" class="button button2">Buton1</button>
+	<button onclick = "butonlar(this)" class="button button2">Buton2</button>
+	<button onclick = "butonlar(this)" class="button button2">Buton3</button>
+	<button onclick = "butonlar(this)" class="button button2">Buton4</button>
+	<button onclick = "butonlar(this)" class="button button2">Buton5</button>
+	<button onclick = "butonlar(this)" class="button button2">Buton6</button>
+	<button onclick = "butonlar(this)" class="button button2">Buton7</button>
+	<button onclick = "butonlar(this)" class="button button2">Buton8</button>
+
+</div>
+<div id="bilgi"><h2></h2></div>
+<div id="bilgi2"><h2></h2></div>
+
+<div id="player" style="width:100%;position:absolute;bottom:40%">
+	<video style="width:94%;height:auto" poster="novideo.jp" controls>
+	   <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+	   Your browser does not support the video tag.
+	</video>
+</div>
+
+
+<div id="joyDiv" style="width:200px;height:200px;margin-bottom:20px;"></div>
+
+<script type="text/javascript">
+function butonlar(btn){
+	bilgi2.getElementsByTagName("h2")[0].innerHTML = btn.innerText + "e tiklandi..";
+
+}
+var joy = new JoyStick('joyDiv');
+function main(){
+	joy_val = joy.GetDir();
+	yonler = {
+		"N": "YUKARI",
+		"S": "ASAGI",
+		"E": "SAGA",
+		"W": "SOLA",
+		"C": "ORTA",
+		
+	};
+	bilgi.getElementsByTagName("h2")[0].innerHTML = yonler[joy_val];
+	//navigator.vibrate(10);
+	
+}
+
+setInterval(main, 50);
+
+</script>
+
+</body>
+</html>
